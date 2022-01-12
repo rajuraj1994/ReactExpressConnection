@@ -18,8 +18,14 @@ import AllProducts from './pages/admin/AllProducts'
 import ProductDetail from './pages/ProductDetail'
 import Shipping from './pages/Shipping'
 import ConfirmOrder from './pages/ConfirmOrder'
+import Payment from './pages/Payment'
+import PaymentElement from './pages/PaymentElement'
+
+
+
 
 const MyRoute = () => {
+   
     return (
         <Router>
             <Routes>
@@ -34,6 +40,10 @@ const MyRoute = () => {
                      <Route  path="/user/profile" element={<UserDashboard/>} />
                      <Route path="/shipping" element={<Shipping/>} />
                      <Route path="/confirm" element={<ConfirmOrder/>} />
+                 
+                 
+                     <Route path="/payment" element={<PaymentElement/>} />
+                 
                  </Route>
                  <Route path="/forgetpassword" element={<ForgetPassword/>} />
                  <Route path="/reset/password/:token" element={<ResetPassword/>} />

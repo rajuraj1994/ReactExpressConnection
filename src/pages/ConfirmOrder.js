@@ -3,12 +3,22 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import { useSelector } from 'react-redux'
 import { isAuthenticated } from './auth'
+import {useNavigate} from 'react-router-dom'
 
 const ConfirmOrder = () => {
+    const navigate = useNavigate()
+
     const { cartItems, shippingInfo } = useSelector(state => state.cart)
     const { user } = isAuthenticated()
     const totalPrice = cartItems.reduce((ac, item) => (ac + item.quantity * item.price), 0)
 
+    const processToPayment=()=>{
+        const data={
+            totalPrice
+        }
+        sessionStorage.setItem('orderInfo',JSON.stringify(data))
+        navigate('/payment')
+    }
 
     return (
         <>
@@ -92,7 +102,9 @@ const ConfirmOrder = () => {
                             </span></p>
                             <p>TotalPrice : Rs.<span>{totalPrice}</span></p>
                             <hr/>
-                            <button className='btn btn-warning'>
+                            <button className='btn btn-warning'
+                            onClick={processToPayment}
+                            >
                                 Proceed To Payment
                             </button>
                         </div>

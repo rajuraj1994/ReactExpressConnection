@@ -2,10 +2,11 @@ import {combineReducers,createStore,applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
 import { cartReducers } from './reducers/cartReducers'
+import { newOrderReducer } from './reducers/orderReducers'
 
 const reducer=combineReducers({
-    cart:cartReducers
-         
+    cart:cartReducers,
+    newOrder:newOrderReducer       
 })
 
 let initialState={
