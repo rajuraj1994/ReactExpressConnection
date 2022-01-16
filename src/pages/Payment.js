@@ -45,8 +45,8 @@ const Payment = () => {
 
     const order= {
         orderItems:cartItems,
-        shippingAddres1: shippingInfo.shippingAddres1,
-        shippingAddres2: shippingInfo.shippingAddres2,
+        shippingAddress1: shippingInfo.shippingAddress1,
+        shippingAddress2: shippingInfo.shippingAddress2,
         city:shippingInfo.city,
         zip:shippingInfo.zip,
         country:shippingInfo.country,

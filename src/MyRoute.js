@@ -20,6 +20,7 @@ import Shipping from './pages/Shipping'
 import ConfirmOrder from './pages/ConfirmOrder'
 import Payment from './pages/Payment'
 import PaymentElement from './pages/PaymentElement'
+import OrderSuccess from './pages/OrderSuccess'
 
 
 
@@ -38,11 +39,10 @@ const MyRoute = () => {
                 <Route path="/email/confirmation/:token" element={ <Confirm/> } /> 
                 <Route  path="/" element={<PrivateRoute/>}>
                      <Route  path="/user/profile" element={<UserDashboard/>} />
-                     <Route path="/shipping" element={<Shipping/>} />
+                     <Route path="/signin/shipping" element={<Shipping/>} />
                      <Route path="/confirm" element={<ConfirmOrder/>} />
-                 
-                 
                      <Route path="/payment" element={<PaymentElement/>} />
+                     <Route path="/success" element={<OrderSuccess/>} />
                  
                  </Route>
                  <Route path="/forgetpassword" element={<ForgetPassword/>} />

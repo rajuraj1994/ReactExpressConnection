@@ -3,9 +3,11 @@ import { Link, useNavigate } from 'react-router-dom'
 import './nav.css'
 import { isAuthenticated } from '../pages/auth'
 import { signout } from '../pages/auth'
+import { useSelector } from 'react-redux'
 
 const Navbar = () => {
     const navigate = useNavigate()
+    const { cartItems } = useSelector(state => state.cart)
 
     return (
         <>
@@ -33,7 +35,7 @@ const Navbar = () => {
                             {isAuthenticated() && isAuthenticated().user.role === 0 && (
                                 <li className="list-unstyled mt-2">
                                     <Link to="/user/profile" className="text-decoration-none text-white fs-5">
-                                       Profile
+                                        Profile
                                     </Link>
                                 </li>
                             )}
@@ -57,7 +59,15 @@ const Navbar = () => {
                             }
 
 
-                            <li className="list-unstyled"><Link to="/cart" className="text-decoration-none text-white fs-5"><i className="bi bi-cart-plus-fill fs-3"></i></Link></li>
+                            <li className="list-unstyled"><Link to="/cart" className="text-decoration-none text-white fs-5">
+                                <i className="bi bi-cart-plus-fill fs-3 position-relative">
+                                    <span className='postion-absolute top-0 start-100 bg-warning badge rounded-pill translate-middle text-dark' style={{ fontSize: '12px' }}>
+                                        <span>{cartItems.length}</span>
+
+                                    </span>
+                                </i>
+                            </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>

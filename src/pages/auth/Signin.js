@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import Footer from '../../components/Footer'
 import Navbar from '../../components/Navbar'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate, useLocation,Navigate } from 'react-router-dom'
 import { signin,authenticate,isAuthenticated } from './index'
 
 
 const Signin = () => {
     const navigate = useNavigate()
-    const { pathname } = useLocation()
+    const pathname  = useLocation()
     const{user}=isAuthenticated()
 
     const [values, setValues] = useState({
@@ -46,7 +46,7 @@ const Signin = () => {
     )
     //to redirect user
     const redirectUser=()=>{
-        // const redirect = pathname.search ? pathname.search.split('=')[1] : '/user/profile'
+         const redirect = pathname.search ? pathname.search.split('=')[1] : '/user/profile'
         
         if(redirectToPage){
             if(user && user.role===1){
@@ -54,7 +54,7 @@ const Signin = () => {
             }
         }
         if(isAuthenticated() && user.role===0){
-            return navigate('/user/profile')
+            return <Navigate to={redirect}/>
         }
     }
     return (
